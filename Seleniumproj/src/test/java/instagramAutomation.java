@@ -39,7 +39,7 @@ public class instagramAutomation {
             }
 
             // Step 5: Go to specific post
-            driver.get("https://www.instagram.com/sashika__dilmina/p/C64FO_4ITOo/");
+            driver.get("https://www.instagram.com/testinginsta709/p/DL-bhFQy9lJ/");
             Thread.sleep(6000); // Wait for post to load
 
             // Step 6: Like the post if not already liked
