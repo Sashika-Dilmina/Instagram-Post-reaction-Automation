@@ -39,20 +39,16 @@ public class instagramAutomation {
             }
 
             // Step 5: Go to specific post
-            driver.get("https://www.instagram.com/testinginsta709/p/DL-bhFQy9lJ/");
+            driver.get("https://www.instagram.com/sashika__dilmina/p/CfbFkBEPZVQ/");
             Thread.sleep(6000); // Wait for post to load
 
             // Step 6: Like the post if not already liked
             try {
-                WebElement heartIcon = driver.findElement(By.xpath("//section//span//*[name()='svg']"));
-                String label = heartIcon.getAttribute("aria-label");
-                if ("Like".equals(label)) {
-                    heartIcon.click();
-                    System.out.println("Liked the post.");
-                    Thread.sleep(3000);
-                } else {
-                    System.out.println("Post is already liked.");
-                }
+                WebElement likeButton = driver.findElement(By.xpath("//section/span/button//*[name()='svg' and @aria-label='Like']"));
+                likeButton.click();
+                System.out.println("Liked the post.");
+
+
             } catch (Exception e) {
                 System.out.println("Like action failed: " + e.getMessage());
             }
