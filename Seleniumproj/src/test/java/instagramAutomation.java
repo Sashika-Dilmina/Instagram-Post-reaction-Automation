@@ -39,19 +39,23 @@ public class instagramAutomation {
             }
 
             // Step 5: Go to specific post
-            driver.get("https://www.instagram.com/sashika__dilmina/p/CfbFkBEPZVQ/");
+            driver.get("https://www.instagram.com/sashika__dilmina/p/CcegGJnrTfk/");
             Thread.sleep(6000); // Wait for post to load
 
             // Step 6: Like the post if not already liked
             try {
-                WebElement likeButton = driver.findElement(By.xpath("//section/span/button//*[name()='svg' and @aria-label='Like']"));
+                // Locate the Like SVG icon with aria-label 'Like'
+                WebElement likeButton = driver.findElement(
+                        By.xpath("//*[name()='svg' and @aria-label='Like']")
+                );
+
+                // Click the like button
                 likeButton.click();
                 System.out.println("Liked the post.");
-
-
             } catch (Exception e) {
                 System.out.println("Like action failed: " + e.getMessage());
             }
+
 
             // Step 7: Comment on the post
             try {
@@ -82,8 +86,9 @@ public class instagramAutomation {
                 System.out.println("Save action failed: " + e.getMessage());
             }
 
-        } finally {
+       } finally {
             // Step 9: Close browser
+
             driver.quit();
             System.out.println("Browser closed.");
         }
