@@ -9,25 +9,30 @@ public class instagramAutomation {
     public static void main(String[] args) throws InterruptedException {
 
         // Setup WebDriver
+
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
 
         try {
             // Step 1: Go to Instagram login page
+
             driver.get("https://www.instagram.com/accounts/login/");
             Thread.sleep(5000); // Wait for page to load
 
             // Step 2: Enter credentials
+
             WebElement username = driver.findElement(By.name("username"));
             WebElement password = driver.findElement(By.name("password"));
             username.sendKeys("testinginsta709");
             password.sendKeys("testing123");
 
             // Step 3: Click login
+
             driver.findElement(By.xpath("//button[@type='submit']")).click();
             Thread.sleep(8000); // Wait for homepage
 
             // Step 4: Handle popups
+
             try {
                 WebElement notNow1 = driver.findElement(By.xpath("//button[text()='Not Now']"));
                 notNow1.click();
@@ -39,17 +44,21 @@ public class instagramAutomation {
             }
 
             // Step 5: Go to specific post
-            driver.get("https://www.instagram.com/sashika__dilmina/p/CcegGJnrTfk/");
+
+            driver.get("https://www.instagram.com/callofduty/p/DKpnS5ZSFAz/");
             Thread.sleep(6000); // Wait for post to load
 
             // Step 6: Like the post if not already liked
+
             try {
                 // Locate the Like SVG icon with aria-label 'Like'
+
                 WebElement likeButton = driver.findElement(
                         By.xpath("//*[name()='svg' and @aria-label='Like']")
                 );
 
                 // Click the like button
+
                 likeButton.click();
                 System.out.println("Liked the post.");
             } catch (Exception e) {
@@ -58,6 +67,7 @@ public class instagramAutomation {
 
 
             // Step 7: Comment on the post
+
             try {
                 WebElement commentIcon = driver.findElement(By.xpath("//*[name()='svg' and @aria-label='Comment']"));
                 commentIcon.click();
@@ -65,7 +75,7 @@ public class instagramAutomation {
 
                 WebElement commentBox = driver.findElement(By.xpath("//textarea[@aria-label='Add a comment…']"));
                 commentBox.click();
-                commentBox.sendKeys("You're gorgeous...");
+                commentBox.sendKeys("This post is great...");
                 Thread.sleep(2000);
 
                 WebElement postButton = driver.findElement(By.xpath("//div[@role='button' and text()='Post']"));
@@ -77,6 +87,7 @@ public class instagramAutomation {
             }
 
             // Step 8: Save the post
+
             try {
                 WebElement saveButton = driver.findElement(By.xpath("//section//span//*[name()='svg' and @aria-label='Save']"));
                 saveButton.click();
@@ -87,6 +98,7 @@ public class instagramAutomation {
             }
 
        } finally {
+
             // Step 9: Close browser
 
             driver.quit();
