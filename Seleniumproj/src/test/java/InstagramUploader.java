@@ -9,9 +9,9 @@ import java.time.Duration;
 
 public class InstagramUploader {
 
-    private static final String USERNAME = "pmw234with";
-    private static final String PASSWORD = "pmw@234with";
-    private static final String IMAGE_PATH = "C:\\Users\\SASHIKA DILMINA\\Downloads\\photo.jpeg";
+    private static final String USERNAME = "testinginsta709";
+    private static final String PASSWORD = "testing123";
+    private static final String IMAGE_PATH = "C:\\Users\\SASHIKA DILMINA\\OneDrive\\Pictures\\wall\\photo.jpeg";
 
     @Test
     public static void main(String[] args) {
@@ -37,10 +37,10 @@ public class InstagramUploader {
             waitForHomePage(driver, wait);
             createAndUploadPost(driver, wait);
 
-            System.out.println("✅ Post uploaded successfully!");
+            System.out.println("Post uploaded successfully!");
 
         } catch (Exception e) {
-            System.err.println("❌ Error: " + e.getMessage());
+            System.err.println("Error: " + e.getMessage());
             e.printStackTrace();
             takeScreenshot(driver);
         } finally {
@@ -62,7 +62,7 @@ public class InstagramUploader {
                     ExpectedConditions.presenceOfElementLocated(By.xpath("//div[contains(text(),'Stories') or @aria-label='Stories']"))
             ));
 
-            System.out.println("✅ Home page fully loaded");
+            System.out.println("Home page fully loaded");
         } catch (Exception e) {
             System.out.println("Current URL during failure: " + driver.getCurrentUrl());
             System.out.println("Page title during failure: " + driver.getTitle());
@@ -128,24 +128,24 @@ public class InstagramUploader {
         WebElement createButton = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("/html/body/div[1]/div/div/div[2]/div/div/div[1]/div[1]/div[2]/div/div/div/div/div[2]/div[7]/div/span/div/a/div")
         ));
-        System.out.println("✅ 'New Post' button located");
+        System.out.println("'New Post' button located");
 
         createButton.click();
-        System.out.println("📸 Create post button clicked");
+        System.out.println("Create post button clicked");
 
         WebElement fileInput = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@type='file']")));
         fileInput.sendKeys(IMAGE_PATH);
-        System.out.println("📁 Image selected: " + IMAGE_PATH);
+        System.out.println("Image selected: " + IMAGE_PATH);
 
         wait.until(ExpectedConditions.presenceOfElementLocated(
                 By.xpath("//*[contains(@style, 'background-image') or contains(@src, 'blob')]")
         ));
-        System.out.println("🖼 Image upload verified");
+        System.out.println(" Image upload verified");
 
         clickNextButton(wait, "First");
         clickNextButton(wait, "Second");
 
-        // ✅ FIXED Share button XPath (text-based, not brittle absolute path)
+        //  FIXED Share button XPath (text-based, not brittle absolute path)
         WebElement shareButton = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//div[text()='Share' or .='Share']")
         ));
@@ -157,9 +157,9 @@ public class InstagramUploader {
                     ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(), 'Your post has been shared')]")),
                     ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(), 'Post shared')]"))
             ));
-            System.out.println("✅ Post confirmed as shared");
+            System.out.println(" Post confirmed as shared");
         } catch (Exception e) {
-            System.out.println("⚠ Post may be shared, but confirmation message not found");
+            System.out.println(" Post may be shared, but confirmation message not found");
         }
     }
 
@@ -177,9 +177,9 @@ public class InstagramUploader {
             ));
 
             nextButton.click();
-            System.out.println("✅ " + step + " Next button clicked");
+            System.out.println(" " + step + " Next button clicked");
         } catch (Exception e) {
-            throw new Exception("❌ Failed to click " + step + " Next button", e);
+            throw new Exception(" Failed to click " + step + " Next button", e);
         }
     }
 
@@ -188,7 +188,7 @@ public class InstagramUploader {
         try {
             TakesScreenshot ts = (TakesScreenshot) driver;
             byte[] screenshot = ts.getScreenshotAs(OutputType.BYTES);
-            System.out.println("🖼 Screenshot captured for debugging");
+            System.out.println(" Screenshot captured for debugging");
         } catch (Exception e) {
             System.err.println("Failed to take screenshot: " + e.getMessage());
         }
